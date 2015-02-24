@@ -30,9 +30,12 @@ Fork -> Patch -> Push -> Pull Request
 
 ## License
 
-MIT
+BSD
 
 
 ## Copyright
 
+```
+Copyright (c) 2015 Glider Labs, LLC <http://www.gliderlabs.com>
 Copyright (c) 2015 Thomas Boerger <http://www.webhippie.de>
+```
