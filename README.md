@@ -1,7 +1,7 @@
 # Alpine
 
 This is our minimal customized Alpine Linux base image based on
-[gliderlabs/alpine:edge](https://registry.hub.docker.com/gliderlabs/alpine/)
+[gliderlabs/alpine:edge](https://registry.hub.docker.com/u/gliderlabs/alpine/)
 
 
 ## Usage
