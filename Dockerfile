@@ -1,7 +1,8 @@
 FROM gliderlabs/alpine:edge
 MAINTAINER Thomas Boerger <thomas@webhippie.de>
 
-ADD etc /etc
+ADD apk /etc/apk
+ADD sbin /usr/sbin
 
 RUN apk-install \
   bash

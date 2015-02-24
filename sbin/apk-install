@@ -1,0 +1,6 @@
+#!/bin/sh
+apk add --update "$@"
+RET=$?
+
+rm -rf /var/cache/apk/*
+exit $RET
