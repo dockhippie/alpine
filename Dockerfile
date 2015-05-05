@@ -4,6 +4,7 @@ MAINTAINER Thomas Boerger <thomas@webhippie.de>
 ADD rootfs /
 
 RUN apk-install \
+  ca-certificates \
   bash \
   bash-completion \
   ncurses \
