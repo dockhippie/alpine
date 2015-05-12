@@ -9,7 +9,7 @@ export CLICOLOR="1"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="1;32"
-export IGNOREEOF="1"
+export IGNOREEOF="0"
 export HISTSIZE="100000"
 export HISTFILESIZE="100000"
 export HISTCONTROL="ignoreboth"
@@ -32,6 +32,11 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias rgrep="grep -rn"
 alias history="fc -l 1"
+
+bind '"\e[1;5C":forward-word'   # Ctrl+Right
+bind '"\e[1;5D":backward-word'  # Ctrl+Left 
+bind '"\e[5~":history-search-backward' # PageUp history search
+bind '"\e[6~":history-search-forward'  # PageDown history search
 
 bash_prompt() {
   local NONE="\[\033[0m\]"
