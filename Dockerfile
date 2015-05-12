@@ -1,4 +1,4 @@
-FROM gliderlabs/alpine:edge
+FROM alpine:edge
 MAINTAINER Thomas Boerger <thomas@webhippie.de>
 
 ADD rootfs /
