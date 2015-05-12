@@ -1,8 +1,7 @@
 # Alpine
 
 This is our minimal customized Alpine Linux base image based on
-[gliderlabs/alpine:edge](https://registry.hub.docker.com/u/gliderlabs/alpine/).
-The current container size is ```37.18 MB```
+[alpine:edge](https://registry.hub.docker.com/_/alpine/).
 
 
 ## Usage
@@ -31,12 +30,11 @@ Fork -> Patch -> Push -> Pull Request
 
 ## License
 
-BSD
+MIT
 
 
 ## Copyright
 
 ```
-Copyright (c) 2015 Glider Labs, LLC <http://www.gliderlabs.com>
 Copyright (c) 2015 Thomas Boerger <http://www.webhippie.de>
 ```
