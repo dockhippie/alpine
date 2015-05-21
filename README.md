@@ -27,9 +27,9 @@ docker run -ti --name alpine webhippie/alpine:latest bash
 ```bash
 ENV LOGSTASH_HOST logstash
 ENV LOGSTASH_PORT 5043
-ENV LOGSTASH_CA /etc/ssl/logstash/certs/ca.pem
-ENV LOGSTASH_CERT /etc/ssl/logstash/certs/cert.pem
-ENV LOGSTASH_KEY /etc/ssl/logstash/private/cert.pem
+ENV LOGSTASH_CA /etc/ssl/logstash/certs/ca.pem # As string or filename
+ENV LOGSTASH_CERT /etc/ssl/logstash/certs/cert.pem # As string or filename
+ENV LOGSTASH_KEY /etc/ssl/logstash/private/cert.pem # As string or filename
 ENV LOGSTASH_TIMEOUT 15
 ENV LOGSTASH_OPTS
 ```
