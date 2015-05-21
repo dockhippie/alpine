@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -f ./setup ]
+then
+  ./setup
+fi
+
+STARTCMD="/usr/bin/logstash-forwarder -config /etc/forwarder"
+
+if [ -n "${LOGSTASH_OPTS}" ]
+then
+  STARTCMD="${STARTCMD} ${LOGSTASH_OPTS}"
+fi
+
+exec ${STARTCMD}

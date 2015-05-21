@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -f ./setup ]
+then
+  ./setup
+fi
+
+/usr/sbin/crond -f

@@ -1,0 +1,59 @@
+#!/bin/bash
+
+declare -x LOGSTASH_HOST
+declare -x LOGSTASH_PORT
+declare -x LOGSTASH_CA
+declare -x LOGSTASH_CERT
+declare -x LOGSTASH_KEY
+declare -x LOGSTASH_TIMEOUT
+declare -x LOGSTASH_OPTS
+
+if [ -z "${LOGSTASH_HOST}" ]
+then
+  LOGSTASH_HOST=logstash
+fi
+
+if [ -z "${LOGSTASH_PORT}" ]
+then
+  LOGSTASH_PORT=5043
+fi
+
+if [ -z "${LOGSTASH_TIMEOUT}" ]
+then
+  LOGSTASH_TIMEOUT=15
+fi
+
+if [ -n "${LOGSTASH_CA}" ]
+then
+  if [ ! -f "${LOGSTASH_CA}" ]
+  then
+    echo -e "${LOGSTASH_CA}" >| /tmp/ca.pem
+    LOGSTASH_CA="/tmp/ca.pem"
+  fi
+else
+  LOGSTASH_CA="/etc/ssl/logstash/certs/ca.pem"
+fi
+
+if [ -n "${LOGSTASH_CERT}" ]
+then
+  if [ ! -f "${LOGSTASH_CERT}" ]
+  then
+    echo -e "${LOGSTASH_CERT}" >| /tmp/cert.pem
+    LOGSTASH_CERT="/tmp/cert.pem"
+  fi
+else
+  LOGSTASH_CERT="/etc/ssl/logstash/certs/cert.pem"
+fi
+
+if [ -n "${LOGSTASH_KEY}" ]
+then
+  if [ ! -f "${LOGSTASH_KEY}" ]
+  then
+    echo -e "${LOGSTASH_KEY}" >| /tmp/cert.key
+    LOGSTASH_KEY="/tmp/cert.key"
+  fi
+else
+  LOGSTASH_KEY="/etc/ssl/logstash/private/cert.pem"
+fi
+
+envsubst < /etc/templates/network.json.tmpl > /etc/forwarder/network.json
