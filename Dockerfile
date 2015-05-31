@@ -5,6 +5,7 @@ ADD rootfs /
 
 RUN apk add --update \
   ca-certificates \
+  curl \
   bash \
   bash-completion \
   ncurses \
