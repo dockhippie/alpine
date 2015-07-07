@@ -12,6 +12,9 @@ RUN apk add --update \
   vim \
   gettext \
   logrotate \
+  tar \
+  rsync \
+  shadow@testing \
   s6@testing && \
   rm -rf /var/cache/apk/* && \
   mkdir -p /etc/logrotate.docker.d
