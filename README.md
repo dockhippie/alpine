@@ -5,9 +5,11 @@
 This is our minimal customized [Alpine](http://alpinelinux.org) Linux base
 image based on [alpine:edge](https://registry.hub.docker.com/_/alpine/).
 Optionally you can enable the ```logstash-forwarder```, to get it running you
-need to use ```s6``` and remove ```/etc/s6/forwarder/down```. If you start
-```s6``` you will always have running a cron daemon and logrotate as well, to
-rotate your logs you can create a config file at ```/etc/logrotate.docker.d```
+need to provide the environment variable ```LOGSTASH_ENABLED=true``` and
+provide some other environment variables to get it configured. You can see the
+available variables below. If you start ```s6``` you will always have running a
+cron daemon and logrotate as well, to rotate your logs you can create a config
+file at ```/etc/logrotate.docker.d```
 
 
 ## Usage
@@ -29,6 +31,7 @@ docker run -ti \
 ## Available environment variables
 
 ```bash
+ENV LOGSTASH_ENABLED false
 ENV LOGSTASH_HOST logstash
 ENV LOGSTASH_PORT 5043
 ENV LOGSTASH_CA /etc/ssl/logstash/certs/ca.pem # As string or filename
