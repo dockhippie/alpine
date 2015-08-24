@@ -1,17 +1,21 @@
 # Alpine
 
-This is our minimal customized Alpine Linux base image based on
-[alpine:edge](https://registry.hub.docker.com/_/alpine/). Optionally you can
-enable the ```logstash-forwarder```, to get it running you need to use ```s6```
-and remove ```/etc/s6/forwarder/down```. If you start ```s6``` you will always
-have running a cron daemon and logrotate as well, to rotate your logs you can
-create a config file at ```/etc/logrotate.docker.d```
+[![](https://badge.imagelayers.io/webhippie/alpine:latest.svg)](https://imagelayers.io/?images=webhippie/alpine:latest 'Get your own badge on imagelayers.io')
+
+This is our minimal customized [Alpine](http://alpinelinux.org) Linux base
+image based on [alpine:edge](https://registry.hub.docker.com/_/alpine/).
+Optionally you can enable the ```logstash-forwarder```, to get it running you
+need to use ```s6``` and remove ```/etc/s6/forwarder/down```. If you start
+```s6``` you will always have running a cron daemon and logrotate as well, to
+rotate your logs you can create a config file at ```/etc/logrotate.docker.d```
 
 
 ## Usage
 
-```
-docker run -ti --name alpine webhippie/alpine:latest bash
+```bash
+docker run -ti \
+  --name alpine \
+  webhippie/alpine:latest
 ```
 
 
