@@ -4,6 +4,7 @@ MAINTAINER Thomas Boerger <thomas@webhippie.de>
 ADD rootfs /
 
 RUN apk update && \
+  apk upgrade && \
   apk add \
     ca-certificates \
     curl \
