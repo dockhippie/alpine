@@ -21,4 +21,5 @@ RUN apk update && \
   rm -rf /var/cache/apk/* && \
   mkdir -p /etc/logrotate.docker.d
 
+ENV TERM xterm
 CMD ["bash"]
