@@ -3,7 +3,7 @@
 [![](https://badge.imagelayers.io/webhippie/alpine:latest.svg)](https://imagelayers.io/?images=webhippie/alpine:latest 'Get your own badge on imagelayers.io')
 
 This is our minimal customized [Alpine](http://alpinelinux.org) Linux base
-image based on [alpine:edge](https://registry.hub.docker.com/_/alpine/).
+image based on [official Alpine](https://registry.hub.docker.com/_/alpine/).
 Optionally you can enable the ```logstash-forwarder```, to get it running you
 need to provide the environment variable ```LOGSTASH_ENABLED=true``` and
 provide some other environment variables to get it configured. You can see the
@@ -12,20 +12,21 @@ cron daemon and logrotate as well, to rotate your logs you can create a config
 file at ```/etc/logrotate.docker.d```
 
 
-## Usage
-
-```bash
-docker run -ti \
-  --name alpine \
-  webhippie/alpine:latest
-```
-
-
 ## Versions
 
 * [latest](https://github.com/dockhippie/alpine/tree/master)
   available as ```webhippie/alpine:latest``` at
   [Docker Hub](https://registry.hub.docker.com/u/webhippie/alpine/)
+
+
+## Volumes
+
+* None
+
+
+## Ports
+
+* None
 
 
 ## Available environment variables
@@ -60,5 +61,5 @@ MIT
 ## Copyright
 
 ```
-Copyright (c) 2015 Thomas Boerger <http://www.webhippie.de>
+Copyright (c) 2015-2016 Thomas Boerger <http://www.webhippie.de>
 ```
