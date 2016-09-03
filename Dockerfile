@@ -16,7 +16,7 @@ RUN apk update && \
     logrotate \
     tar \
     rsync \
-    shadow@testing \
+    shadow \
     s6@testing && \
   rm -rf /var/cache/apk/* && \
   mkdir -p /etc/logrotate.docker.d
