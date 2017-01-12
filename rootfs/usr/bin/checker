@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [[ $1 -eq 0 ]]
+then
+    echo "ok"
+else
+    echo "failed"
+    /bin/s6-svscanctl -t /etc/s6
+fi
