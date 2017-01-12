@@ -12,15 +12,13 @@ RUN apk update && \
     bash-completion \
     ncurses \
     vim \
-    gettext \
-    logrotate \
     tar \
     rsync \
     shadow \
     su-exec \
-    s6@testing && \
-  rm -rf /var/cache/apk/* && \
-  mkdir -p /etc/logrotate.docker.d
+    s6 && \
+  rm -rf /var/cache/apk/*
 
+ENV CRON_ENABLED false
 ENV TERM xterm
 CMD ["bash"]

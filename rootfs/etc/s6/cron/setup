@@ -1,1 +1,9 @@
 #!/bin/bash
+
+if [[ "${CRON_ENABLED}" == "false" || "${CRON_ENABLED}" == "0" ]]
+then
+  /bin/s6-svc -d /etc/s6/forwarder
+  exit 0
+else
+  echo "Cron is enabled, launching it!"
+fi
