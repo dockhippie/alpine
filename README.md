@@ -1,6 +1,6 @@
 # Alpine
 
-[![](https://badge.imagelayers.io/webhippie/alpine:latest.svg)](https://imagelayers.io/?images=webhippie/alpine:latest 'Get your own badge on imagelayers.io')
+[![](https://images.microbadger.com/badges/image/webhippie/alpine.svg)](https://microbadger.com/images/webhippie/alpine "Get your own image badge on microbadger.com")
 
 This is our minimal customized [Alpine](http://alpinelinux.org) Linux base
 image based on [official Alpine](https://registry.hub.docker.com/_/alpine/).
