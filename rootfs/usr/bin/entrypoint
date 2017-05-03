@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+for FILE in $(find /etc/entrypoint.d -type f -iname *.sh)
+do
+  source ${FILE}
+done
+
+exec $@
