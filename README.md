@@ -8,6 +8,7 @@ This is our minimal customized [Alpine Linux](http://alpinelinux.org) base image
 ## Versions
 
 * [latest](https://github.com/dockhippie/alpine/tree/master) available as ```webhippie/alpine:latest``` at [Docker Hub](https://registry.hub.docker.com/u/webhippie/alpine/)
+* [5.3](https://github.com/dockhippie/alpine/tree/5.3) available as ```webhippie/alpine:5.3``` at [Docker Hub](https://registry.hub.docker.com/u/webhippie/alpine/)
 
 
 ## Volumes
