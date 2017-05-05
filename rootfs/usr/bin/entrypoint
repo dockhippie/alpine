@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for FILE in $(find /etc/entrypoint.d -type f -iname *.sh)
+for FILE in $(find /etc/entrypoint.d -type f -iname *.sh | sort)
 do
   source ${FILE}
 done
