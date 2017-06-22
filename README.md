@@ -7,8 +7,7 @@ This is our minimal customized [Alpine Linux](http://alpinelinux.org) base image
 
 ## Versions
 
-* [latest](https://github.com/dockhippie/alpine/tree/master) available as ```webhippie/alpine:latest``` at [Docker Hub](https://registry.hub.docker.com/u/webhippie/alpine/)
-* [3.5](https://github.com/dockhippie/alpine/tree/3.5) available as ```webhippie/alpine:3.5``` at [Docker Hub](https://registry.hub.docker.com/u/webhippie/alpine/)
+To get an overview about the available versions please take a look at the [GitHub branches](https://github.com/dockhippie/alpine/branches/all) or our [Docker Hub tags](https://hub.docker.com/r/webhippie/alpine/tags/), these lists are always up to date.
 
 
 ## Volumes
@@ -26,6 +25,11 @@ This is our minimal customized [Alpine Linux](http://alpinelinux.org) base image
 ```bash
 ENV CRON_ENABLED false
 ```
+
+
+## Inherited environment variables
+
+* None
 
 
 ## Contributing
