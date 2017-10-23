@@ -5,4 +5,4 @@ then
   source ./setup
 fi
 
-/usr/sbin/crond -f
+/usr/sbin/crond -f -l 2
