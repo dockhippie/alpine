@@ -16,5 +16,5 @@ COPY ./overlay ./overlay-arm32v6 /
 
 RUN apk update && \
   apk upgrade -a || apk fix && \
-  apk add ca-certificates curl bash bash-completion ncurses vim tar rsync shadow su-exec gomplate s6 && \
+  apk add ca-certificates curl bash bash-completion ncurses vim tar rsync shadow su-exec s6 && \
   rm -rf /var/cache/apk/*
