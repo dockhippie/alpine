@@ -1,0 +1,20 @@
+FROM arm64v8/alpine:3.8
+
+LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
+  org.label-schema.name="Alpine" \
+  org.label-schema.version="3.8" \
+  org.label-schema.vendor="Thomas Boerger" \
+  org.label-schema.schema-version="1.0"
+
+ENV CRON_ENABLED false
+ENV TERM xterm
+
+ENTRYPOINT ["/usr/bin/entrypoint"]
+CMD ["bash"]
+
+COPY ./overlay ./overlay-arm64v8 /
+
+RUN apk update && \
+  apk upgrade && \
+  apk add ca-certificates curl bash bash-completion ncurses vim tar rsync shadow su-exec gomplate s6 && \
+  rm -rf /var/cache/apk/*
