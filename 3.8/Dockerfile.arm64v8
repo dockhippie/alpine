@@ -12,6 +12,10 @@ ENV TERM xterm
 ENTRYPOINT ["/usr/bin/entrypoint"]
 CMD ["bash"]
 
+RUN apk update && \
+  apk upgrade && \
+  rm -rf /var/cache/apk/*
+
 COPY ./overlay ./overlay-arm64v8 /
 
 RUN apk update && \
