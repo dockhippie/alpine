@@ -32,10 +32,7 @@ local agent(arch='amd64') =
             repo: name,
           },
           when: {
-            event: ['pull_request', 'push'],
-            branch: {
-              exclude: ['master'],
-            },
+            event: ['pull_request'],
           },
         },
         {
@@ -52,10 +49,15 @@ local agent(arch='amd64') =
           },
           when: {
             event: ['push'],
-            branch: ['master'],
           },
         },
       ],
+      trigger: {
+        ref: [
+          'refs/heads/master',
+          'refs/pull/**',
+        ],
+      },
     },
 
   manifest(version='latest', depends_on=[])::
@@ -81,8 +83,9 @@ local agent(arch='amd64') =
       ],
       depends_on: [x + '-' + version for x in depends_on],
       trigger: {
-        event: ['push'],
-        branch: ['master'],
+        ref: [
+          'refs/heads/master',
+        ],
       },
     },
 
@@ -106,8 +109,9 @@ local agent(arch='amd64') =
       ],
       depends_on: ['manifest-' + x for x in depends_on],
       trigger: {
-        event: ['push'],
-        branch: ['master'],
+        ref: [
+          'refs/heads/master',
+        ],
       },
     },
 }
