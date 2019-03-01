@@ -1,0 +1,20 @@
+FROM alpine:3.7
+
+LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
+  org.label-schema.name="Alpine" \
+  org.label-schema.version="3.7" \
+  org.label-schema.vendor="Thomas Boerger" \
+  org.label-schema.schema-version="1.0"
+
+ENV CRON_ENABLED false
+ENV TERM xterm
+
+ENTRYPOINT ["/usr/bin/entrypoint"]
+CMD ["bash"]
+
+COPY ./overlay ./overlay-amd64 /
+
+RUN apk update && \
+  apk upgrade -a || apk fix && \
+  apk add ca-certificates curl bash bash-completion ncurses vim tar rsync shadow su-exec s6 && \
+  rm -rf /var/cache/apk/*

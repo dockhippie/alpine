@@ -1,5 +1,6 @@
 # Alpine
 
+[![Build Status](https://cloud.drone.io/api/badges/dockhippie/alpine/status.svg)](https://cloud.drone.io/dockhippie/alpine)
 [![](https://images.microbadger.com/badges/image/webhippie/alpine.svg)](https://microbadger.com/images/webhippie/alpine "Get your own image badge on microbadger.com")
 
 This is our minimal customized [Alpine Linux](http://alpinelinux.org) base image based on [official Alpine](https://registry.hub.docker.com/_/alpine/). Optionally you can enable a cron daemon, to get it running you need to provide the environment variable `CRON_ENABLED=true` or `CRON_ENABLED=1`. You can see the available variables below. Be aware that you have to start `s6` to get the cron daemon started automatically.
@@ -7,7 +8,7 @@ This is our minimal customized [Alpine Linux](http://alpinelinux.org) base image
 
 ## Versions
 
-To get an overview about the available versions please take a look at the [GitHub branches](https://github.com/dockhippie/alpine/branches/all) or our [Docker Hub tags](https://hub.docker.com/r/webhippie/alpine/tags/), these lists are always up to date.
+* [latest](./latest) available as `webhippie/alpine:latest`
 
 
 ## Volumes
@@ -25,11 +26,6 @@ To get an overview about the available versions please take a look at the [GitHu
 ```bash
 ENV CRON_ENABLED false
 ```
-
-
-## Inherited environment variables
-
-* None
 
 
 ## Contributing
@@ -50,5 +46,5 @@ MIT
 ## Copyright
 
 ```
-Copyright (c) 2015 Thomas Boerger <http://www.webhippie.de>
+Copyright (c) 2018 Thomas Boerger <http://www.webhippie.de>
 ```
