@@ -117,8 +117,13 @@ TIMEOUT=${TIMEOUT:-15}
 CHILD=${CHILD:-0}
 
 if [[ "$(realpath $(which timeout))" =~ "busybox" ]]; then
-    ISBUSY=1
-    BUSYTIMEFLAG="-t"
+    if [[ $(busybox ls --help 2>&1 | head -1 | sed "s/^.*BusyBox\ v[0-9]*\.\([0-9.]*\)\..*/\1/") -ge 30 ]]; then
+        ISBUSY=0
+        BUSYTIMEFLAG=""
+    else
+        ISBUSY=1
+        BUSYTIMEFLAG="-t"
+    fi
 else
     ISBUSY=0
     BUSYTIMEFLAG=""
