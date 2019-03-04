@@ -11,7 +11,7 @@ local agent(arch='amd64') =
     arch;
 
 {
-  build(name, version='latest', arch='amd64')::
+  build(name, path='latest', version='latest', arch='amd64')::
     {
       kind: 'pipeline',
       name: arch + '-' + version,
@@ -27,8 +27,8 @@ local agent(arch='amd64') =
           settings: {
             dry_run: true,
             tags: version + '-' + arch,
-            dockerfile: version + '/Dockerfile.' + arch,
-            context: version,
+            dockerfile: path + '/Dockerfile.' + arch,
+            context: path,
             repo: name,
           },
           when: {
@@ -41,8 +41,8 @@ local agent(arch='amd64') =
           pull: 'always',
           settings: {
             tags: version + '-' + arch,
-            dockerfile: version + '/Dockerfile.' + arch,
-            context: version,
+            dockerfile: path + '/Dockerfile.' + arch,
+            context: path,
             repo: name,
             username: { from_secret: 'docker_username' },
             password: { from_secret: 'docker_password' },
@@ -60,7 +60,7 @@ local agent(arch='amd64') =
       },
     },
 
-  manifest(version='latest', depends_on=[])::
+  manifest(path='latest', version='latest', depends_on=[])::
     {
       kind: 'pipeline',
       name: 'manifest-' + version,
@@ -76,7 +76,7 @@ local agent(arch='amd64') =
           settings: {
             username: { from_secret: 'docker_username' },
             password: { from_secret: 'docker_password' },
-            spec: version + '/manifest.tmpl',
+            spec: path + '/manifest.tmpl',
             ignore_missing: true,
           },
         },

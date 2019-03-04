@@ -169,8 +169,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.9
-    dockerfile: 3.9/Dockerfile.amd64
+    context: v3.9
+    dockerfile: v3.9/Dockerfile.amd64
     dry_run: true
     repo: webhippie/alpine
     tags: 3.9-amd64
@@ -182,8 +182,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.9
-    dockerfile: 3.9/Dockerfile.amd64
+    context: v3.9
+    dockerfile: v3.9/Dockerfile.amd64
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -212,8 +212,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.9
-    dockerfile: 3.9/Dockerfile.arm32v6
+    context: v3.9
+    dockerfile: v3.9/Dockerfile.arm32v6
     dry_run: true
     repo: webhippie/alpine
     tags: 3.9-arm32v6
@@ -225,8 +225,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.9
-    dockerfile: 3.9/Dockerfile.arm32v6
+    context: v3.9
+    dockerfile: v3.9/Dockerfile.arm32v6
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -255,8 +255,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.9
-    dockerfile: 3.9/Dockerfile.arm64v8
+    context: v3.9
+    dockerfile: v3.9/Dockerfile.arm64v8
     dry_run: true
     repo: webhippie/alpine
     tags: 3.9-arm64v8
@@ -268,8 +268,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.9
-    dockerfile: 3.9/Dockerfile.arm64v8
+    context: v3.9
+    dockerfile: v3.9/Dockerfile.arm64v8
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -301,7 +301,7 @@ steps:
     ignore_missing: true
     password:
       from_secret: docker_password
-    spec: 3.9/manifest.tmpl
+    spec: v3.9/manifest.tmpl
     username:
       from_secret: docker_username
 
@@ -327,8 +327,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.8
-    dockerfile: 3.8/Dockerfile.amd64
+    context: v3.8
+    dockerfile: v3.8/Dockerfile.amd64
     dry_run: true
     repo: webhippie/alpine
     tags: 3.8-amd64
@@ -340,8 +340,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.8
-    dockerfile: 3.8/Dockerfile.amd64
+    context: v3.8
+    dockerfile: v3.8/Dockerfile.amd64
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -370,8 +370,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.8
-    dockerfile: 3.8/Dockerfile.arm32v6
+    context: v3.8
+    dockerfile: v3.8/Dockerfile.arm32v6
     dry_run: true
     repo: webhippie/alpine
     tags: 3.8-arm32v6
@@ -383,8 +383,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.8
-    dockerfile: 3.8/Dockerfile.arm32v6
+    context: v3.8
+    dockerfile: v3.8/Dockerfile.arm32v6
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -413,8 +413,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.8
-    dockerfile: 3.8/Dockerfile.arm64v8
+    context: v3.8
+    dockerfile: v3.8/Dockerfile.arm64v8
     dry_run: true
     repo: webhippie/alpine
     tags: 3.8-arm64v8
@@ -426,8 +426,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.8
-    dockerfile: 3.8/Dockerfile.arm64v8
+    context: v3.8
+    dockerfile: v3.8/Dockerfile.arm64v8
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -459,7 +459,7 @@ steps:
     ignore_missing: true
     password:
       from_secret: docker_password
-    spec: 3.8/manifest.tmpl
+    spec: v3.8/manifest.tmpl
     username:
       from_secret: docker_username
 
@@ -485,8 +485,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.7
-    dockerfile: 3.7/Dockerfile.amd64
+    context: v3.7
+    dockerfile: v3.7/Dockerfile.amd64
     dry_run: true
     repo: webhippie/alpine
     tags: 3.7-amd64
@@ -498,8 +498,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.7
-    dockerfile: 3.7/Dockerfile.amd64
+    context: v3.7
+    dockerfile: v3.7/Dockerfile.amd64
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -528,8 +528,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.7
-    dockerfile: 3.7/Dockerfile.arm32v6
+    context: v3.7
+    dockerfile: v3.7/Dockerfile.arm32v6
     dry_run: true
     repo: webhippie/alpine
     tags: 3.7-arm32v6
@@ -541,8 +541,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.7
-    dockerfile: 3.7/Dockerfile.arm32v6
+    context: v3.7
+    dockerfile: v3.7/Dockerfile.arm32v6
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -571,8 +571,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.7
-    dockerfile: 3.7/Dockerfile.arm64v8
+    context: v3.7
+    dockerfile: v3.7/Dockerfile.arm64v8
     dry_run: true
     repo: webhippie/alpine
     tags: 3.7-arm64v8
@@ -584,8 +584,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.7
-    dockerfile: 3.7/Dockerfile.arm64v8
+    context: v3.7
+    dockerfile: v3.7/Dockerfile.arm64v8
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -617,7 +617,7 @@ steps:
     ignore_missing: true
     password:
       from_secret: docker_password
-    spec: 3.7/manifest.tmpl
+    spec: v3.7/manifest.tmpl
     username:
       from_secret: docker_username
 
@@ -643,8 +643,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.6
-    dockerfile: 3.6/Dockerfile.amd64
+    context: v3.6
+    dockerfile: v3.6/Dockerfile.amd64
     dry_run: true
     repo: webhippie/alpine
     tags: 3.6-amd64
@@ -656,8 +656,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.6
-    dockerfile: 3.6/Dockerfile.amd64
+    context: v3.6
+    dockerfile: v3.6/Dockerfile.amd64
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -686,8 +686,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.6
-    dockerfile: 3.6/Dockerfile.arm32v6
+    context: v3.6
+    dockerfile: v3.6/Dockerfile.arm32v6
     dry_run: true
     repo: webhippie/alpine
     tags: 3.6-arm32v6
@@ -699,8 +699,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.6
-    dockerfile: 3.6/Dockerfile.arm32v6
+    context: v3.6
+    dockerfile: v3.6/Dockerfile.arm32v6
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -729,8 +729,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.6
-    dockerfile: 3.6/Dockerfile.arm64v8
+    context: v3.6
+    dockerfile: v3.6/Dockerfile.arm64v8
     dry_run: true
     repo: webhippie/alpine
     tags: 3.6-arm64v8
@@ -742,8 +742,8 @@ steps:
   pull: always
   image: plugins/docker:latest
   settings:
-    context: 3.6
-    dockerfile: 3.6/Dockerfile.arm64v8
+    context: v3.6
+    dockerfile: v3.6/Dockerfile.arm64v8
     password:
       from_secret: docker_password
     repo: webhippie/alpine
@@ -775,7 +775,7 @@ steps:
     ignore_missing: true
     password:
       from_secret: docker_password
-    spec: 3.6/manifest.tmpl
+    spec: v3.6/manifest.tmpl
     username:
       from_secret: docker_username
 
@@ -809,6 +809,7 @@ trigger:
   - refs/heads/master
 
 depends_on:
+- manifest-latest
 - manifest-latest
 - manifest-3.9
 - manifest-3.8
