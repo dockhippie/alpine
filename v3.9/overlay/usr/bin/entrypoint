@@ -5,6 +5,6 @@ do
   source ${FILE}
 done
 
-if [[ $# -gt 0 ]]; then
+if [[ "${0}" == "/usr/bin/entrypoint" ]]; then
   exec $@
 fi
