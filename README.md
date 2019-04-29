@@ -28,7 +28,7 @@ This is our minimal customized [Alpine Linux](http://alpinelinux.org) base image
 ## Available environment variables
 
 ```bash
-ENV CRON_ENABLED false
+CRON_ENABLED = false
 ```
 
 
