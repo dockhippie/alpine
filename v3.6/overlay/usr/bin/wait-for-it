@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -eo pipefail
 CMDNAME=$(basename $0)
 
 usage()
