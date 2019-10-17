@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM amd64/alpine:3.10
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
   org.label-schema.name="Alpine" \
