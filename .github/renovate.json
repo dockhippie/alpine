@@ -1,17 +1,17 @@
 {
   "extends": [
     "docker:pinDigests",
-    "docker:disableMajor"
+    "default:automergeDigest"
   ],
   "ignorePaths": [
     "archive/"
   ],
-  "dockerfile": {
-    "fileMatch": [
-      ".*/Dockerfile\\.(amd64|arm32v6|arm64v8)"
-    ]
-  },
   "labels": [
     "renovate"
-  ]
+  ],
+  "packageRules": [{
+    "datasources": ["docker"],
+    "updateTypes": ["major", "minor", "patch"],
+    "enabled": false
+  }]
 }

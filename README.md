@@ -9,6 +9,7 @@ This is our minimal customized [Alpine Linux](http://alpinelinux.org) base image
 ## Versions
 
 * [latest](./latest) available as `webhippie/alpine:latest`
+* [3.10](./v3.10) available as `webhippie/alpine:3.10`
 * [3.9](./v3.9) available as `webhippie/alpine:3.9`
 * [3.8](./v3.8) available as `webhippie/alpine:3.8`
 * [3.7](./v3.7) available as `webhippie/alpine:3.7`
