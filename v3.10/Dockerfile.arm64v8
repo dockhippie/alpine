@@ -1,4 +1,4 @@
-FROM arm64v8/alpine:3.10@sha256:1827be57ca85c28287d18349bbfdb3870419692656cb67c4cd0f5042f0f63aec
+FROM arm64v8/alpine:3.10@sha256:4491fd429b8ad188ba5e120782b2bbb704261fd2ef9942fcdee128c5fcc594d5
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
   org.label-schema.name="Alpine" \
