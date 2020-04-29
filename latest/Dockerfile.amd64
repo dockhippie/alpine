@@ -1,4 +1,4 @@
-FROM amd64/alpine:edge@sha256:83d0a55bb752426898f28a3478b63e8c22e73114dcecd4a79e4c7b197e8608f0
+FROM amd64/alpine:edge@sha256:284932c7a5816299d40c36abd95ad1edd474530e0ee18f1ce922652379f0fbc6
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
   org.label-schema.name="Alpine" \
