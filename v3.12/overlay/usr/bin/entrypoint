@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+for FILE in $(find /etc/entrypoint.d -type f -iname \*.sh | sort)
+do
+  source ${FILE}
+done
+
+if [[ "${0}" == "/usr/bin/entrypoint" ]]; then
+  exec $@
+fi
