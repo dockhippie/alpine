@@ -1,10 +1,8 @@
 FROM arm64v8/alpine:edge@sha256:cfd04e2c9bfed5d883b14329da780888a6a4d1cbc421a0fb1ad076d81bff1d0e
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
-  org.label-schema.name="Alpine" \
-  org.label-schema.version="latest" \
-  org.label-schema.vendor="Thomas Boerger" \
-  org.label-schema.schema-version="1.0"
+  org.opencontainers.image.title="Alpine" \
+  org.opencontainers.image.vendor="Thomas Boerger"
 
 ENV CRON_ENABLED false
 ENV TERM xterm

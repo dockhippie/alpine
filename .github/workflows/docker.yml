@@ -1,0 +1,144 @@
+name: docker
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        folder:
+          - v3.13
+          - v3.12
+          - v3.11
+          - v3.10
+          - v3.9
+          - v3.8
+          - v3.7
+          - v3.6
+          - latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 100
+
+      - uses: marceloprado/has-changed-path@v1
+        id: changed
+        with:
+          paths: ${{ matrix.folder }}
+
+      - name: Define version
+        id: prepare
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          TAG=${{ matrix.folder }}
+
+          if [[ "${TAG}" =~ ^v[0-9._-]+$ ]]; then
+            TAG=${TAG#v}
+          fi
+
+          echo ::set-output name=tag::${TAG}
+
+      - name: Image metadata
+        id: meta
+        if: steps.changed.outputs.changed == 'true'
+        uses: crazy-max/ghaction-docker-meta@v1
+        with:
+          images: webhippie/alpine
+
+      - name: Setup QEMU
+        id: qemu
+        if: steps.changed.outputs.changed == 'true'
+        uses: docker/setup-qemu-action@v1
+
+      - name: Setup Buildx
+        id: buildx
+        if: steps.changed.outputs.changed == 'true'
+        uses: docker/setup-buildx-action@v1
+
+      - name: Docker login
+        if: steps.changed.outputs.changed == 'true' && github.event_name != 'pull_request'
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: QuayIO login
+        if: steps.changed.outputs.changed == 'true' && github.event_name != 'pull_request'
+        uses: docker/login-action@v1
+        with:
+          registry: quay.io
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
+
+      - name: Build amd64
+        if: steps.changed.outputs.changed == 'true'
+        uses: docker/build-push-action@v2
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          context: ${{ matrix.folder }}/
+          file: ${{ matrix.folder }}/Dockerfile.amd64
+          platforms: linux/amd64
+          push: ${{ github.event_name != 'pull_request' }}
+          labels: ${{ steps.meta.outputs.labels }}
+          tags: |
+            webhippie/alpine:${{ steps.prepare.outputs.tag }}-amd64
+            quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-amd64
+
+      - name: Build arm64v8
+        if: steps.changed.outputs.changed == 'true'
+        uses: docker/build-push-action@v2
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          context: ${{ matrix.folder }}/
+          file: ${{ matrix.folder }}/Dockerfile.arm64v8
+          platforms: linux/arm64
+          push: ${{ github.event_name != 'pull_request' }}
+          labels: ${{ steps.meta.outputs.labels }}
+          tags: |
+            webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm64v8
+            quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm64v8
+
+      - name: Build arm32v6
+        if: steps.changed.outputs.changed == 'true'
+        uses: docker/build-push-action@v2
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          context: ${{ matrix.folder }}/
+          file: ${{ matrix.folder }}/Dockerfile.arm32v6
+          platforms: linux/arm/v6
+          push: ${{ github.event_name != 'pull_request' }}
+          labels: ${{ steps.meta.outputs.labels }}
+          tags: |
+            webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm32v6
+            quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm32v6
+
+      - name: Image manifest
+        if: steps.changed.outputs.changed == 'true' && github.event_name != 'pull_request'
+        uses: addnab/docker-run-action@v1
+        with:
+          image: toolhippie/manifest-tool:latest
+          options: -v ${{ github.workspace }}:/work -w /work
+          run: |
+            sed \
+              's|webhippie|quay.io/webhippie|' \
+              ${{ matrix.folder }}/manifest.yml >| ${{ matrix.folder }}/quay.yml
+
+            manifest-tool \
+              --username ${{ secrets.DOCKER_USERNAME }} \
+              --password ${{ secrets.DOCKER_PASSWORD }} \
+              push from-spec ${{ matrix.folder }}/manifest.yml
+
+            manifest-tool \
+              --username ${{ secrets.QUAY_USERNAME }} \
+              --password ${{ secrets.QUAY_PASSWORD }} \
+              push from-spec ${{ matrix.folder }}/quay.yml

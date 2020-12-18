@@ -1,10 +1,8 @@
 FROM arm32v6/alpine:3.6@sha256:343d5883d8019a73bcdb761b82d75124ecef7298534b19e1e581f173113b1755
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
-  org.label-schema.name="Alpine" \
-  org.label-schema.version="3.6" \
-  org.label-schema.vendor="Thomas Boerger" \
-  org.label-schema.schema-version="1.0"
+  org.opencontainers.image.title="Alpine" \
+  org.opencontainers.image.vendor="Thomas Boerger"
 
 ENV CRON_ENABLED false
 ENV TERM xterm

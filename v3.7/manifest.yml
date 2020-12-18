@@ -1,18 +1,15 @@
-image: webhippie/alpine:3.10
+image: webhippie/alpine:3.7
 manifests:
-  -
-    image: webhippie/alpine:3.10-amd64
+  - image: webhippie/alpine:3.7-amd64
     platform:
       architecture: amd64
       os: linux
-  -
-    image: webhippie/alpine:3.10-arm64v8
+  - image: webhippie/alpine:3.7-arm64v8
     platform:
       architecture: arm64
       os: linux
       variant: v8
-  -
-    image: webhippie/alpine:3.10-arm32v6
+  - image: webhippie/alpine:3.7-arm32v6
     platform:
       architecture: arm
       os: linux
