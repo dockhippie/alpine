@@ -1,9 +1,8 @@
-# Alpine
+# alpine
 
-[![Build Status](https://github.com/dockhippie/alpine/workflows/.github/workflows/docker.yml/badge.svg)](https://github.com/dockhippie/alpine/actions)
-[![](https://images.microbadger.com/badges/image/webhippie/alpine.svg)](https://microbadger.com/images/webhippie/alpine "Get your own image badge on microbadger.com")
+[![Docker Build](https://github.com/dockhippie/alpine/workflows/docker/badge.svg)](https://github.com/dockhippie/alpine/actions?query=workflow%3Adocker) [![Readme Build](https://github.com/dockhippie/alpine/workflows/readme/badge.svg)](https://github.com/dockhippie/alpine/actions?query=workflow%3Areadme) [![Docker Size](https://img.shields.io/docker/image-size/webhippie/alpine/latest)](#) [![Docker Pulls](https://img.shields.io/docker/pulls/webhippie/alpine)](https://hub.docker.com/r/webhippie/alpine)
 
-This is our minimal customized [Alpine Linux](http://alpinelinux.org) base image based on [official Alpine](https://registry.hub.docker.com/_/alpine/). Optionally you can enable a cron daemon, to get it running you need to provide the environment variable `CRON_ENABLED=true` or `CRON_ENABLED=1`. You can see the available variables below. Be aware that you have to start `s6` to get the cron daemon started automatically.
+This is our customized [Alpine Linux](http://alpinelinux.org) base image based on the [official Alpine](https://hub.docker.com/_/alpine).
 
 ## Versions
 
@@ -19,8 +18,8 @@ For the available versions please look at [Docker Hub](https://hub.docker.com/r/
 
 ## Available environment variables
 
-```bash
-CRON_ENABLED = false
+```console
+
 ```
 
 ## Contributing
@@ -37,6 +36,6 @@ MIT
 
 ## Copyright
 
-```
+```console
 Copyright (c) 2018 Thomas Boerger <http://www.webhippie.de>
 ```
