@@ -1,4 +1,4 @@
-FROM amd64/alpine:3.11@sha256:39eda93d15866957feaee28f8fc5adb545276a64147445c64992ef69804dbf01
+FROM amd64/alpine:3.11@sha256:1861023544345fc0a4b2223f2bcbb0e903ff2c1f29c09141250baf7f81333b49
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
   org.opencontainers.image.title="Alpine" \
