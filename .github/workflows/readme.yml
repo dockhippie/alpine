@@ -37,9 +37,7 @@ jobs:
       - name: Push readme
         uses: christian-korneck/update-container-description-action@v1
         env:
-          DOCKER_APIKEY: ${{ secrets.QUAY_APIKEY }}
-          DOCKER_USER: ${{ secrets.QUAY_USERNAME }}
-          DOCKER_PASS: ${{ secrets.QUAY_PASSWORD }}
+          APIKEY__QUAY_IO: ${{ secrets.QUAY_APIKEY }}
         with:
           destination_container_repo: quay.io/webhippie/alpine
           provider: quay
