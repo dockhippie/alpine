@@ -1,6 +1,5 @@
-if [ -z "$PS1" ]
-then
-  return
+if [ -z "$PS1" ]; then
+    return
 fi
 
 export EDITOR="vim"
@@ -34,19 +33,19 @@ alias rgrep="grep -rn"
 alias history="fc -l 1"
 
 bash_prompt() {
-  local NONE="\[\033[0m\]"
+    local NONE="\[\033[0m\]"
 
-  local U="\[\033[01;32m\]"
-  local R="\[\033[01;31m\]"
-  local S="\[\033[01;37m\]"
-  local H="\[\033[01;35m\]"
-  local D="\[\033[01;34m\]"
+    local U="\[\033[01;32m\]"
+    local R="\[\033[01;31m\]"
+    local S="\[\033[01;37m\]"
+    local H="\[\033[01;35m\]"
+    local D="\[\033[01;34m\]"
 
-  if [[ "${EUID}" == "0" ]] ; then
-    export PS1="\n$R\u$S@$H\h: $D\w # $NONE"
-  else
-    export PS1="\n$U\u$S@$H\h: $D\w # $NONE"
-  fi
+    if [[ "${EUID}" == "0" ]] ; then
+        export PS1="\n$R\u$S@$H\h: $D\w # $NONE"
+    else
+        export PS1="\n$U\u$S@$H\h: $D\w # $NONE"
+    fi
 }
 
 bash_prompt && unset bash_prompt
