@@ -3,7 +3,7 @@ name: readme
 on:
   push:
     branches:
-      - $default-branch
+      - master
     paths:
       - README.md
       - .github/workflows/readme.yml
@@ -11,6 +11,7 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
@@ -28,6 +29,7 @@ jobs:
 
   quayio:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
