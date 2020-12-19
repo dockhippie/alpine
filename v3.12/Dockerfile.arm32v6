@@ -1,4 +1,4 @@
-FROM arm32v6/alpine:3.12
+FROM arm32v6/alpine:3.12@sha256:096ebf69d65b5dcb3756fcfb053e6031a3935542f20cd7a8b7c59e1b3cb71558
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
   org.opencontainers.image.title="Alpine" \
