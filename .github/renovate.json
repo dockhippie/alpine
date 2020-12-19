@@ -1,17 +1,23 @@
 {
-  "extends": [
-    "docker:pinDigests",
-    "default:automergeDigest"
-  ],
-  "ignorePaths": [
-    "archive/"
-  ],
-  "labels": [
-    "renovate"
-  ],
-  "packageRules": [{
-    "datasources": ["docker"],
-    "updateTypes": ["major", "minor", "patch"],
-    "enabled": false
-  }]
+    "extends": [
+        "docker:pinDigests",
+        "default:automergeDigest"
+    ],
+    "ignorePaths": [
+        "archive/"
+    ],
+    "labels": [
+        "renovate"
+    ],
+    "packageRules": [{
+        "datasources": [
+            "docker"
+        ],
+        "updateTypes": [
+            "major",
+            "minor",
+            "patch"
+        ],
+        "enabled": false
+    }]
 }
