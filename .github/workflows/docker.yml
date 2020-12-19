@@ -10,7 +10,7 @@ on:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     strategy:
       matrix:
@@ -33,7 +33,7 @@ jobs:
       - uses: marceloprado/has-changed-path@v1
         id: changed
         with:
-          paths: ${{ matrix.folder }}
+          paths: ${{ matrix.folder }} .github/workflows/docker.yml
 
       - name: Define version
         id: prepare
