@@ -7,14 +7,14 @@ LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
 ENV CRON_ENABLED false
 ENV TERM xterm
 
-ENTRYPOINT ["/usr/bin/entrypoint"]
+ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/entrypoint"]
 CMD ["bash"]
 
 COPY ./overlay ./overlay-amd64 /
 
 RUN apk update && \
   apk upgrade -a || apk fix && \
-  apk add ca-certificates curl bash bash-completion ncurses vim tar rsync shadow su-exec s6 && \
+  apk add ca-certificates curl bash bash-completion ncurses vim tar rsync shadow su-exec tini s6 && \
   curl -sSLo /usr/bin/wait-for-it https://raw.githubusercontent.com/thegeeklab/wait-for/d17c23172a39d7555f184d916881aeae6d446a22/wait-for && \
   chmod +x /usr/bin/wait-for-it && \
   rm -rf /var/cache/apk/*
