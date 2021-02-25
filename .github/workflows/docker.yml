@@ -123,7 +123,7 @@ jobs:
 
       - name: Image manifest
         if: steps.changed.outputs.changed == 'true' && github.event_name != 'pull_request'
-        uses: addnab/docker-run-action@v1
+        uses: addnab/docker-run-action@v2
         with:
           image: toolhippie/manifest-tool:latest
           options: -v ${{ github.workspace }}:/work -w /work
