@@ -125,7 +125,7 @@ jobs:
         if: steps.changed.outputs.changed == 'true' && github.event_name != 'pull_request'
         uses: addnab/docker-run-action@v1
         with:
-          image: toolhippie/manifest-tool:latest
+          image: toolhippie/manifest-tool:latest@sha256:e14c5b44fb747064c79b8e36b30839de27be15d25fd5305a8956c31caff7de46
           options: -v ${{ github.workspace }}:/work -w /work
           run: |
             sed \
