@@ -1,4 +1,4 @@
-FROM arm64v8/alpine:3.11@sha256:262bfcaa8ca68981a044c50e2e824edb11defa4872aafdf2843dd0e162b84b9a
+FROM arm64v8/alpine:3.11@sha256:b3f3def7cb32d957cda8e8253257d349e3af76188cde9ffa2622239d46c96616
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
   org.opencontainers.image.title="Alpine" \
