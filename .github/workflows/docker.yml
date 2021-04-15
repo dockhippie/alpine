@@ -50,7 +50,7 @@ jobs:
       - name: Image metadata
         id: meta
         if: steps.changed.outputs.changed == 'true'
-        uses: crazy-max/ghaction-docker-meta@v1
+        uses: crazy-max/ghaction-docker-meta@v2
         with:
           images: webhippie/alpine
 
