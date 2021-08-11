@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.16-amd64 AS build
+FROM webhippie/golang:1.16-amd64@sha256:54e09e46810dd9bb68907b5c562ce7ed633080443ed8e9b548ed42d9579a5b67 AS build
 
 # renovate: datasource=github-releases depName=thegeeklab/wait-for
 ENV WAITFOR_VERSION=0.2.0
@@ -10,7 +10,7 @@ ENV GOMPLATE_VERSION=3.9.0
 
 RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-amd64
 
-FROM amd64/alpine:3.13
+FROM alpine:3.13@sha256:def822f9851ca422481ec6fee59a9966f12b351c62ccb9aca841526ffaa9f748
 
 ENV CRON_ENABLED false
 ENV TERM xterm
