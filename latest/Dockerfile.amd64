@@ -1,8 +1,20 @@
-FROM amd64/alpine:edge@sha256:45fbb9ea28b1eb6ba9cfff9bf1c4c20c73191f6caa314284331967e56012f2f7
+FROM webhippie/golang:1.16-amd64 AS build
 
-LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
-  org.opencontainers.image.title="Alpine" \
-  org.opencontainers.image.vendor="Thomas Boerger"
+# renovate: datasource=github-releases depName=thegeeklab/wait-for
+ENV WAITFOR_VERSION=0.2.0
+
+RUN curl -sSLo /tmp/wait-for-it https://github.com/thegeeklab/wait-for/releases/download/v${WAITFOR_VERSION}/wait-for
+
+# renovate: datasource=github-releases depName=hairyhenderson/gomplate
+ENV GOMPLATE_VERSION=3.9.0
+
+RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-amd64
+
+RUN git clone -b master https://github.com/webhippie/templater.git /srv/app/src/github.com/webhippie/templater && \
+  cd /srv/app/src/github.com/webhippie/templater && \
+  make retool generate build
+
+FROM amd64/alpine:edge@sha256:45fbb9ea28b1eb6ba9cfff9bf1c4c20c73191f6caa314284331967e56012f2f7
 
 ENV CRON_ENABLED false
 ENV TERM xterm
@@ -10,11 +22,13 @@ ENV TERM xterm
 ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/entrypoint"]
 CMD ["bash"]
 
-COPY ./overlay ./overlay-amd64 /
+COPY ./overlay /
+
+COPY --from=build /tmp/wait-for-it /usr/bin/
+COPY --from=build /tmp/gomplate /usr/bin/
+COPY --from=build /srv/app/src/github.com/webhippie/templater/templater /usr/bin/
 
 RUN apk update && \
   apk upgrade -a || apk fix && \
   apk add ca-certificates curl bash bash-completion ncurses vim tar rsync shadow su-exec tini s6 && \
-  curl -sSLo /usr/bin/wait-for-it https://raw.githubusercontent.com/thegeeklab/wait-for/d17c23172a39d7555f184d916881aeae6d446a22/wait-for && \
-  chmod +x /usr/bin/wait-for-it && \
   rm -rf /var/cache/apk/*

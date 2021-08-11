@@ -1,6 +1,6 @@
 # alpine
 
-[![Docker Build](https://github.com/dockhippie/alpine/workflows/docker/badge.svg)](https://github.com/dockhippie/alpine/actions?query=workflow%3Adocker) [![Readme Build](https://github.com/dockhippie/alpine/workflows/readme/badge.svg)](https://github.com/dockhippie/alpine/actions?query=workflow%3Areadme) [![Docker Size](https://img.shields.io/docker/image-size/webhippie/alpine/latest)](#) [![Docker Pulls](https://img.shields.io/docker/pulls/webhippie/alpine)](https://hub.docker.com/r/webhippie/alpine)
+[![Docker Build](https://github.com/dockhippie/alpine/workflows/docker/badge.svg)](https://github.com/dockhippie/alpine/actions?query=workflow%3Adocker) [![Readme Build](https://github.com/dockhippie/alpine/workflows/readme/badge.svg)](https://github.com/dockhippie/alpine/actions?query=workflow%3Areadme) [![Docker Size](https://img.shields.io/docker/image-size/webhippie/alpine/latest)](#) [![Docker Pulls](https://img.shields.io/docker/pulls/webhippie/alpine)](https://hub.docker.com/r/webhippie/alpine) [![GitHub Repo](https://img.shields.io/badge/github-repo-yellowgreen)](https://github.com/dockhippie/alpine)
 
 This is our customized [Alpine Linux](http://alpinelinux.org) base image based on the [official Alpine Linux image](https://hub.docker.com/_/alpine).
 
@@ -28,7 +28,7 @@ Fork -> Patch -> Push -> Pull Request
 
 ## Authors
 
-* [Thomas Boerger](https://github.com/tboerger)
+*  [Thomas Boerger](https://github.com/tboerger)
 
 ## License
 

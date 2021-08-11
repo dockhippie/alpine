@@ -1,13 +1,12 @@
 {
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
+        "github>webhippie/renovate:docker",
         "docker:pinDigests",
         "default:automergeDigest"
     ],
     "ignorePaths": [
         "archive/"
-    ],
-    "labels": [
-        "renovate"
     ],
     "packageRules": [{
         "datasources": [
@@ -15,8 +14,7 @@
         ],
         "updateTypes": [
             "major",
-            "minor",
-            "patch"
+            "minor"
         ],
         "enabled": false
     }]

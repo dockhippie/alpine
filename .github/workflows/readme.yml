@@ -1,12 +1,10 @@
+---
 name: readme
 
 on:
   push:
     branches:
       - master
-    paths:
-      - README.md
-      - .github/workflows/readme.yml
 
 jobs:
   docker:
@@ -17,15 +15,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Push readme
-        uses: christian-korneck/update-container-description-action@v1
-        env:
-          DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASS: ${{ secrets.DOCKER_PASSWORD }}
+        uses: actionhippie/pushrm@v1
+        if: github.event_name != 'pull_request'
         with:
-          destination_container_repo: webhippie/alpine
           provider: dockerhub
-          short_description: Docker images for Alpine
-          readme_file: README.md
+          target: webhippie/alpine
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          description: Docker image for alpine
+          readme: README.md
 
   quayio:
     runs-on: ubuntu-20.04
@@ -35,10 +33,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Push readme
-        uses: christian-korneck/update-container-description-action@v1
-        env:
-          DOCKER_APIKEY: ${{ secrets.QUAY_APIKEY }}
+        uses: actionhippie/pushrm@v1
         with:
-          destination_container_repo: quay.io/webhippie/alpine
           provider: quay
-          readme_file: README.md
+          target: quay.io/webhippie/alpine
+          apikey: ${{ secrets.QUAY_APIKEY }}
+          readme: README.md
+
+...
