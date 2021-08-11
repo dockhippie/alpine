@@ -93,8 +93,8 @@ jobs:
           tags: |
             webhippie/alpine:${{ steps.prepare.outputs.tag }}-amd64
             quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-amd64
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=buildkit-${{ matrix.folder }}-amd64
+          cache-to: type=gha,mode=max,scope=buildkit-${{ matrix.folder }}-amd64
 
       - name: Build arm64
         id: arm64
@@ -109,8 +109,8 @@ jobs:
           tags: |
             webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm64
             quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm64
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=buildkit-${{ matrix.folder }}-arm64
+          cache-to: type=gha,mode=max,scope=buildkit-${{ matrix.folder }}-arm64
 
       - name: Build armv6
         id: armv6
@@ -125,8 +125,8 @@ jobs:
           tags: |
             webhippie/alpine:${{ steps.prepare.outputs.tag }}-armv6
             quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-armv6
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=buildkit-${{ matrix.folder }}-armv6
+          cache-to: type=gha,mode=max,scope=buildkit-${{ matrix.folder }}-armv6
 
       - name: Hub manifest
         id: manifest1
