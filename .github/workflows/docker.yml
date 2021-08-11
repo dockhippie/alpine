@@ -119,8 +119,8 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: |
-            webhippie/alpine:${{ steps.prepare.outputs.tag }}-armv6
-            quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-armv6
+            webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm
+            quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm
 
       - name: Hub manifest
         id: manifest1
