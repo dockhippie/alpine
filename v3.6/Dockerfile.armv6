@@ -10,10 +10,6 @@ ENV GOMPLATE_VERSION=3.9.0
 
 RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-armv6
 
-RUN git clone -b master https://github.com/webhippie/templater.git /srv/app/src/github.com/webhippie/templater && \
-  cd /srv/app/src/github.com/webhippie/templater && \
-  make retool generate build
-
 FROM arm32v6/alpine:3.6@sha256:343d5883d8019a73bcdb761b82d75124ecef7298534b19e1e581f173113b1755
 
 ENV CRON_ENABLED false
@@ -26,7 +22,6 @@ COPY ./overlay /
 
 COPY --from=build /tmp/wait-for-it /usr/bin/
 COPY --from=build /tmp/gomplate /usr/bin/
-COPY --from=build /srv/app/src/github.com/webhippie/templater/templater /usr/bin/
 
 RUN apk update && \
   apk upgrade -a || apk fix && \
