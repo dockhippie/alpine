@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.16-arm32v6@sha256:7d6fc800937683330516795c131ae1a93db56777c8e4ab2207a5486a739e19ab AS build
+FROM webhippie/golang:1.16-arm@sha256:7d6fc800937683330516795c131ae1a93db56777c8e4ab2207a5486a739e19ab AS build
 
 # renovate: datasource=github-releases depName=thegeeklab/wait-for
 ENV WAITFOR_VERSION=0.2.0
@@ -10,7 +10,7 @@ ENV GOMPLATE_VERSION=3.9.0
 
 RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-armv6
 
-FROM arm32v6/alpine:3.6@sha256:343d5883d8019a73bcdb761b82d75124ecef7298534b19e1e581f173113b1755
+FROM arm32v6/alpine:3.9@sha256:7a3d88cbc7e2d6c0213deaf2d006933c9f5905c4eb7846b703a66fc6504000b7
 
 ENV CRON_ENABLED false
 ENV TERM xterm
