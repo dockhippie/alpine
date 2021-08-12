@@ -10,7 +10,7 @@ ENV GOMPLATE_VERSION=3.9.0
 
 RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-amd64
 
-FROM alpine:edge@sha256:0119f88f395766eb52f9b817c3d23576bf31935dc8e94abe14bae9a083ce4639
+FROM alpine:edge@sha256:2f77b6664f181b246244f9cd052155e74fb3f26d2a502edecd5fff0fc4bda388
 
 ENV CRON_ENABLED false
 ENV TERM xterm
