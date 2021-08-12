@@ -108,13 +108,13 @@ jobs:
             webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm64
             quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm64
 
-      - name: Build armv6
-        id: armv6
+      - name: Build arm
+        id: arm
         uses: docker/build-push-action@v2
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: ${{ matrix.folder }}/
-          file: ${{ matrix.folder }}/Dockerfile.armv6
+          file: ${{ matrix.folder }}/Dockerfile.arm
           platforms: linux/arm/v6
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.meta.outputs.labels }}

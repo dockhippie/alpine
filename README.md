@@ -6,7 +6,7 @@ This is our customized [Alpine Linux](http://alpinelinux.org) base image based o
 
 ## Versions
 
-For the available versions please look at [Docker Hub](https://hub.docker.com/r/webhippie/alpine/tags) or [Quay](https://quay.io/repository/tboerger/alpine?tab=tags) or check the existing folders within the [GitHub repository](https://github.com/dockhippie/alpine).
+For the available versions please look at [Docker Hub](https://hub.docker.com/r/webhippie/alpine/tags) or [Quay](https://quay.io/repository/webhippie/alpine?tab=tags) or check the existing folders within the [GitHub repository](https://github.com/dockhippie/alpine).
 
 ## Volumes
 

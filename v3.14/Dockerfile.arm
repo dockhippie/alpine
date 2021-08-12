@@ -10,7 +10,7 @@ ENV GOMPLATE_VERSION=3.9.0
 
 RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-armv6
 
-FROM arm32v6/alpine:3.11@sha256:8ec9b6f84837ea8c08ae3454f41d2fcdd5fa6517ae135c74c6978a62882eb8fd
+FROM arm32v6/alpine:3.14@sha256:1d2cfbb29672ce268a77b3b9eca532a96356f4843044d22a9677231e1333e271
 
 ENV CRON_ENABLED false
 ENV TERM xterm
@@ -25,5 +25,5 @@ COPY --from=build /tmp/gomplate /usr/bin/
 
 RUN apk update && \
   apk upgrade -a || apk fix && \
-  apk add ca-certificates curl bash bash-completion ncurses vim tar rsync shadow su-exec tini s6 && \
+  apk add ca-certificates curl bash bash-completion ncurses vim tar rsync shadow su-exec tini s6 xz && \
   rm -rf /var/cache/apk/*
