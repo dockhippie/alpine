@@ -15,33 +15,52 @@ jobs:
 
     strategy:
       matrix:
-        folder:
-          - v3.14
-          - v3.13
-          - v3.12
-          - v3.11
-          - v3.10
-          - v3.9
-          - v3.8
-          - v3.7
-          - v3.6
-          - latest
+        version:
+          - folder: v3.14
+            tag: 3.14
+            arm64: true
+            arm: true
+          - folder: v3.13
+            tag: 3.13
+            arm64: true
+            arm: true
+          - folder: v3.12
+            tag: 3.12
+            arm64: true
+            arm: true
+          - folder: v3.11
+            tag: 3.11
+            arm64: true
+            arm: true
+          - folder: v3.10
+            tag: 3.10
+            arm64: true
+            arm: true
+          - folder: v3.9
+            tag: 3.9
+            arm64: true
+            arm: true
+          - folder: v3.8
+            tag: 3.8
+            arm64: true
+            arm: true
+          - folder: v3.7
+            tag: 3.7
+            arm64: true
+            arm: true
+          - folder: v3.6
+            tag: 3.6
+            arm64: true
+            arm: true
+          - folder: latest
+            tag: latest
+            arm64: true
+            arm: true
 
     steps:
       - name: Checkout source
         id: source
         uses: actions/checkout@v2
-
-      - name: Define version
-        id: prepare
-        run: |
-          TAG=${{ matrix.folder }}
-
-          if [[ "${TAG}" =~ ^v[0-9._-]+$ ]]; then
-            TAG=${TAG#v}
-          fi
-
-          echo ::set-output name=tag::${TAG}
 
       - name: Docker meta
         id: meta
@@ -85,42 +104,44 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           builder: ${{ steps.buildx.outputs.name }}
-          context: ${{ matrix.folder }}/
-          file: ${{ matrix.folder }}/Dockerfile.amd64
+          context: ${{ matrix.version.folder }}/
+          file: ${{ matrix.version.folder }}/Dockerfile.amd64
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: |
-            webhippie/alpine:${{ steps.prepare.outputs.tag }}-amd64
-            quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-amd64
+            webhippie/alpine:${{ matrix.version.tag }}-amd64
+            quay.io/webhippie/alpine:${{ matrix.version.tag }}-amd64
 
       - name: Build arm64
         id: arm64
         uses: docker/build-push-action@v2
+        if: matrix.version.arm64
         with:
           builder: ${{ steps.buildx.outputs.name }}
-          context: ${{ matrix.folder }}/
-          file: ${{ matrix.folder }}/Dockerfile.arm64
+          context: ${{ matrix.version.folder }}/
+          file: ${{ matrix.version.folder }}/Dockerfile.arm64
           platforms: linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: |
-            webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm64
-            quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm64
+            webhippie/alpine:${{ matrix.version.tag }}-arm64
+            quay.io/webhippie/alpine:${{ matrix.version.tag }}-arm64
 
       - name: Build arm
         id: arm
         uses: docker/build-push-action@v2
+        if: matrix.version.arm
         with:
           builder: ${{ steps.buildx.outputs.name }}
-          context: ${{ matrix.folder }}/
-          file: ${{ matrix.folder }}/Dockerfile.arm
+          context: ${{ matrix.version.folder }}/
+          file: ${{ matrix.version.folder }}/Dockerfile.arm
           platforms: linux/arm/v6
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: |
-            webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm
-            quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-arm
+            webhippie/alpine:${{ matrix.version.tag }}-arm
+            quay.io/webhippie/alpine:${{ matrix.version.tag }}-arm
 
       - name: Hub manifest
         id: manifest1
@@ -130,8 +151,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           platforms: linux/amd64,linux/arm64,linux/arm/v6
-          template: webhippie/alpine:${{ steps.prepare.outputs.tag }}-ARCH
-          target: webhippie/alpine:${{ steps.prepare.outputs.tag }}
+          template: webhippie/alpine:${{ matrix.version.tag }}-ARCH
+          target: webhippie/alpine:${{ matrix.version.tag }}
           ignore_missing: true
 
       - name: Quay manifest
@@ -142,8 +163,8 @@ jobs:
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_PASSWORD }}
           platforms: linux/amd64,linux/arm64,linux/arm/v6
-          template: quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}-ARCH
-          target: quay.io/webhippie/alpine:${{ steps.prepare.outputs.tag }}
+          template: quay.io/webhippie/alpine:${{ matrix.version.tag }}-ARCH
+          target: quay.io/webhippie/alpine:${{ matrix.version.tag }}
           ignore_missing: true
 
 ...
