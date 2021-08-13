@@ -1,4 +1,4 @@
-FROM arm32v6/golang:1.16.7-alpine AS build
+FROM arm32v6/alpine:3.7@sha256:c51b8029218660b67e5513ae1945f9fcd11cb8f4fa536e8a66f1566f68c81ade AS build
 
 # renovate: datasource=github-releases depName=thegeeklab/wait-for
 ENV WAITFOR_VERSION=0.2.0

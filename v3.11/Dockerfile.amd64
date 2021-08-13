@@ -1,4 +1,4 @@
-FROM golang:1.16.7-alpine AS build
+FROM alpine:3.11@sha256:71a2b866473e26e7c3dfcd7488975ed8d8ba46c495f76a50957fc11f2d6f4dec AS build
 
 # renovate: datasource=github-releases depName=thegeeklab/wait-for
 ENV WAITFOR_VERSION=0.2.0
@@ -10,7 +10,7 @@ ENV GOMPLATE_VERSION=3.9.0
 
 RUN wget -O /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-amd64
 
-FROM amd64/alpine:3.11@sha256:71a2b866473e26e7c3dfcd7488975ed8d8ba46c495f76a50957fc11f2d6f4dec
+FROM alpine:3.11@sha256:71a2b866473e26e7c3dfcd7488975ed8d8ba46c495f76a50957fc11f2d6f4dec
 
 ENV CRON_ENABLED false
 ENV TERM xterm
