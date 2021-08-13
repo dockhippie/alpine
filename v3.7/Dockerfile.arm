@@ -3,12 +3,12 @@ FROM arm32v6/alpine:3.7@sha256:c51b8029218660b67e5513ae1945f9fcd11cb8f4fa536e8a6
 # renovate: datasource=github-releases depName=thegeeklab/wait-for
 ENV WAITFOR_VERSION=0.2.0
 
-RUN wget -O /tmp/wait-for-it https://github.com/thegeeklab/wait-for/releases/download/v${WAITFOR_VERSION}/wait-for
+RUN wget --no-check-certificate -O /tmp/wait-for-it https://github.com/thegeeklab/wait-for/releases/download/v${WAITFOR_VERSION}/wait-for
 
 # renovate: datasource=github-releases depName=hairyhenderson/gomplate
 ENV GOMPLATE_VERSION=3.9.0
 
-RUN wget -O /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-armv6
+RUN wget --no-check-certificate -O /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-armv6
 
 FROM arm32v6/alpine:3.7@sha256:c51b8029218660b67e5513ae1945f9fcd11cb8f4fa536e8a66f1566f68c81ade
 
