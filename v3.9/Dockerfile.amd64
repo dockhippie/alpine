@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.16-amd64@sha256:71f1a9b3a8df7bd11b54930c787fd036db6bf03d7ffeaf319ce338e0ecc4c978 AS build
+FROM webhippie/golang:1.16-amd64@sha256:07f69816147bbc8073038d5fec5c0bf34b64cfeb3f733fbbabd7614be1c8ab83 AS build
 
 # renovate: datasource=github-releases depName=thegeeklab/wait-for
 ENV WAITFOR_VERSION=0.2.0
