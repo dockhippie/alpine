@@ -1,4 +1,4 @@
-FROM alpine:3.6@sha256:36c3a913e62f77a82582eb7ce30d255f805c3d1e11d58e1f805e14d33c2bc5a5 AS build
+FROM alpine:3.6@sha256:66790a2b79e1ea3e1dabac43990c54aca5d1ddf268d9a5a0285e4167c8b24475 AS build
 
 RUN apk add -U curl ca-certificates
 
