@@ -30,4 +30,5 @@ COPY --from=build /tmp/gomplate /usr/bin/
 RUN apk update && \
   apk upgrade -a || apk fix && \
   apk add ca-certificates curl bash bash-completion ncurses vim tar rsync shadow su-exec tini s6 xz && \
+  update-ca-certificates && \
   rm -rf /var/cache/apk/*
