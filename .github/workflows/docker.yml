@@ -16,6 +16,10 @@ jobs:
     strategy:
       matrix:
         version:
+          - folder: v3.15
+            tag: 3.15
+            arm64: true
+            arm: true
           - folder: v3.14
             tag: 3.14
             arm64: true
