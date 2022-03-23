@@ -1,4 +1,4 @@
-FROM alpine:3.14@sha256:beca83085fd7f5b2a2cc457ddb2ed180c090c13ad7e806530e4ef578cb5cfe7b AS build
+FROM alpine:3.14@sha256:cf5b2ed6e37873edf0733ad18ca3ccc414a60ba260be611459c245508a19b652 AS build
 
 RUN apk add -U curl ca-certificates
 
@@ -14,7 +14,7 @@ ENV GOMPLATE_VERSION=3.10.0
 RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-amd64 && \
   chmod +x /tmp/gomplate
 
-FROM alpine:3.14@sha256:beca83085fd7f5b2a2cc457ddb2ed180c090c13ad7e806530e4ef578cb5cfe7b
+FROM alpine:3.14@sha256:cf5b2ed6e37873edf0733ad18ca3ccc414a60ba260be611459c245508a19b652
 
 ENV CRON_ENABLED false
 ENV TERM xterm
