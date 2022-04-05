@@ -1,4 +1,4 @@
-FROM arm32v6/alpine:3.13@sha256:e87303198c4860e2aa38d511dd9fcbcb7a9dbf8438518830ca459a89f6028817 AS build
+FROM arm32v6/alpine:3.13@sha256:ad6669d2e8ff3dae4c4558ef12a2422d2126303664341430f5d61aa77618aa3d AS build
 
 RUN apk add -U curl ca-certificates
 
@@ -14,7 +14,7 @@ ENV GOMPLATE_VERSION=3.10.0
 RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-armv6 && \
   chmod +x /tmp/gomplate
 
-FROM arm32v6/alpine:3.13@sha256:e87303198c4860e2aa38d511dd9fcbcb7a9dbf8438518830ca459a89f6028817
+FROM arm32v6/alpine:3.13@sha256:ad6669d2e8ff3dae4c4558ef12a2422d2126303664341430f5d61aa77618aa3d
 
 ENV CRON_ENABLED false
 ENV TERM xterm
