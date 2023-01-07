@@ -28,42 +28,6 @@ jobs:
             tag: 3.15
             arm64: true
             arm: true
-          - folder: v3.14
-            tag: 3.14
-            arm64: true
-            arm: true
-          - folder: v3.13
-            tag: 3.13
-            arm64: true
-            arm: true
-          - folder: v3.12
-            tag: 3.12
-            arm64: true
-            arm: true
-          - folder: v3.11
-            tag: 3.11
-            arm64: true
-            arm: true
-          - folder: v3.10
-            tag: 3.10
-            arm64: true
-            arm: true
-          - folder: v3.9
-            tag: 3.9
-            arm64: true
-            arm: true
-          - folder: v3.8
-            tag: 3.8
-            arm64: true
-            arm: true
-          - folder: v3.7
-            tag: 3.7
-            arm64: true
-            arm: true
-          - folder: v3.6
-            tag: 3.6
-            arm64: true
-            arm: true
           - folder: latest
             tag: latest
             arm64: true
