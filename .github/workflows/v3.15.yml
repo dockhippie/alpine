@@ -1,23 +1,23 @@
 ---
-name: latest
+name: v3.15
 
 "on":
   push:
     branches:
       - master
     paths:
-      - latest/*
-      - .github/workflows/docker.yml
+      - v3.15/*
+      - .github/workflows/v3.15.yml
   pull_request:
     branches:
       - master
     paths:
-      - latest/*
-      - .github/workflows/docker.yml
+      - v3.15/*
+      - .github/workflows/v3.15.yml
   workflow_dispatch:
 
 concurrency:
-  group: latest
+  group: v3.15
 
 jobs:
   docker:
@@ -70,42 +70,42 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           builder: ${{ steps.buildx.outputs.name }}
-          context: latest/
-          file: latest/Dockerfile.amd64
+          context: v3.15/
+          file: v3.15/Dockerfile.amd64
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: |
-            webhippie/alpine:latest-amd64
-            quay.io/webhippie/alpine:latest-amd64
+            webhippie/alpine:3.15-amd64
+            quay.io/webhippie/alpine:3.15-amd64
 
       - name: Build arm64
         id: arm64
         uses: docker/build-push-action@v3
         with:
           builder: ${{ steps.buildx.outputs.name }}
-          context: latest/
-          file: latest/Dockerfile.arm64
+          context: v3.15/
+          file: v3.15/Dockerfile.arm64
           platforms: linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: |
-            webhippie/alpine:latest-arm64
-            quay.io/webhippie/alpine:latest-arm64
+            webhippie/alpine:3.15-arm64
+            quay.io/webhippie/alpine:3.15-arm64
 
       - name: Build arm
         id: arm
         uses: docker/build-push-action@v3
         with:
           builder: ${{ steps.buildx.outputs.name }}
-          context: latest/
-          file: latest/Dockerfile.arm
+          context: v3.15/
+          file: v3.15/Dockerfile.arm
           platforms: linux/arm/v7
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: |
-            webhippie/alpine:latest-arm
-            quay.io/webhippie/alpine:latest-arm
+            webhippie/alpine:3.15-arm
+            quay.io/webhippie/alpine:3.15-arm
 
       - name: Hub manifest
         id: manifest1
@@ -115,8 +115,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
-          template: webhippie/alpine:latest-ARCH
-          target: webhippie/alpine:latest
+          template: webhippie/alpine:3.15-ARCH
+          target: webhippie/alpine:3.15
           ignore_missing: true
 
       - name: Quay manifest
@@ -127,8 +127,8 @@ jobs:
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_PASSWORD }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
-          template: quay.io/webhippie/alpine:latest-ARCH
-          target: quay.io/webhippie/alpine:latest
+          template: quay.io/webhippie/alpine:3.15-ARCH
+          target: quay.io/webhippie/alpine:3.15
           ignore_missing: true
 
 ...
