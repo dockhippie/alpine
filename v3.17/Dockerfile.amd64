@@ -3,7 +3,7 @@ FROM alpine:3.17@sha256:69665d02cb32192e52e07644d76bc6f25abeb5410edc1c7a81a10ba3
 RUN apk add -U curl ca-certificates
 
 # renovate: datasource=github-releases depName=thegeeklab/wait-for
-ENV WAITFOR_VERSION=0.3.0
+ENV WAITFOR_VERSION=0.4.2
 
 RUN curl -sSLo /tmp/wait-for-it https://github.com/thegeeklab/wait-for/releases/download/v${WAITFOR_VERSION}/wait-for && \
   chmod +x /tmp/wait-for-it
