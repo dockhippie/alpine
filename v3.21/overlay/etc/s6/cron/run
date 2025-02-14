@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -f ./setup ]; then
+    source ./setup
+fi
+
+echo "Starting cron daemon now..."
+/usr/sbin/crond -f -l 2
