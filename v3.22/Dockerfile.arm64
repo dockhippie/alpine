@@ -6,18 +6,20 @@ RUN apk add -U curl ca-certificates
 ENV WAITFOR_VERSION=0.4.3
 
 RUN curl -sSLo /tmp/wait-for-it https://github.com/thegeeklab/wait-for/releases/download/v${WAITFOR_VERSION}/wait-for && \
-  chmod +x /tmp/wait-for-it
+  chmod +x /tmp/wait-for-it && \
+  /tmp/wait-for-it --help >/dev/null
 
 # renovate: datasource=github-releases depName=hairyhenderson/gomplate
 ENV GOMPLATE_VERSION=4.3.3
 
 RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-arm64 && \
-  chmod +x /tmp/gomplate
+  chmod +x /tmp/gomplate && \
+  /tmp/gomplate --help >/dev/null
 
 FROM arm64v8/alpine:3.22
 
-ENV CRON_ENABLED false
-ENV TERM xterm
+ENV CRON_ENABLED=false
+ENV TERM=xterm
 
 ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/entrypoint"]
 CMD ["bash"]
