@@ -1,4 +1,4 @@
-FROM arm32v6/alpine:3.15@sha256:a4da48124241e22801713c88e391be27074f456e9b87fc419331bdf08486cd74 AS build
+FROM arm32v6/alpine:3.15 AS build
 
 RUN apk add -U curl ca-certificates
 
@@ -7,7 +7,7 @@ ENV WAITFOR_VERSION=0.4.3
 
 RUN curl -sSLo /tmp/wait-for-it https://github.com/thegeeklab/wait-for/releases/download/v${WAITFOR_VERSION}/wait-for && \
   chmod +x /tmp/wait-for-it && \
-  /tmp/wait-for-it --help >/dev/null
+  /tmp/wait-for-it --help 2>/dev/null
 
 # renovate: datasource=github-releases depName=hairyhenderson/gomplate
 ENV GOMPLATE_VERSION=4.3.3
@@ -16,7 +16,7 @@ RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases
   chmod +x /tmp/gomplate && \
   /tmp/gomplate --help >/dev/null
 
-FROM arm32v6/alpine:3.15@sha256:a4da48124241e22801713c88e391be27074f456e9b87fc419331bdf08486cd74
+FROM arm32v6/alpine:3.15
 
 ENV CRON_ENABLED=false
 ENV TERM=xterm
