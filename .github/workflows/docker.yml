@@ -21,6 +21,7 @@ name: latest
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   docker:

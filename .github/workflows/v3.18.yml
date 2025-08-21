@@ -21,6 +21,7 @@ name: v3.18
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   docker:

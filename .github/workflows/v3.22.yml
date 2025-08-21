@@ -21,6 +21,7 @@ name: v3.22
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   docker:

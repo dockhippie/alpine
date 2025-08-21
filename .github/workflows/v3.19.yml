@@ -21,6 +21,7 @@ name: v3.19
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   docker:

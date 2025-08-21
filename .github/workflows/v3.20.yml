@@ -21,6 +21,7 @@ name: v3.20
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   docker:
