@@ -86,6 +86,7 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: latest/
+          provenance: false
           file: latest/Dockerfile.${{ matrix.variant.arch }}
           platforms: ${{ matrix.variant.platform }}
           push: ${{ github.event_name != 'pull_request' }}

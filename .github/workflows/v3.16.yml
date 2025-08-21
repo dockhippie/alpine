@@ -86,6 +86,7 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: v3.16/
+          provenance: false
           file: v3.16/Dockerfile.${{ matrix.variant.arch }}
           platforms: ${{ matrix.variant.platform }}
           push: ${{ github.event_name != 'pull_request' }}
