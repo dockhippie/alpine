@@ -99,6 +99,8 @@ jobs:
           platforms: ${{ matrix.variant.platform }}
           push: ${{ github.event_name != 'pull_request' }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           tags: |
             webhippie/alpine:3.20-${{ matrix.variant.arch }}
             quay.io/webhippie/alpine:3.20-${{ matrix.variant.arch }}
@@ -112,8 +114,32 @@ jobs:
       - docker
 
     steps:
-      - name: Wait something
-        run: sleep 60
+      - name: Check tags
+        run: |
+          set -euo pipefail
+          REPO="webhippie/alpine"
+          TAG="3.20"
+          ARCHS=("amd64" "arm64" "arm")
+
+          retry() {
+            local max=5 delay=10
+            for i in $(seq 1 $max); do
+              "$@" && return 0
+              echo "Attempt $i failed. Retrying in ${delay}s..."
+              sleep $delay
+              delay=$(( delay * 2 ))
+            done
+            return 1
+          }
+
+          for ARCH in "${ARCHS[@]}"; do
+            echo "Checking ${REPO}:${TAG}-${ARCH}..."
+            if ! retry docker manifest inspect "${REPO}:${TAG}-${ARCH}" > /dev/null 2>&1; then
+              echo "::error ::Image ${REPO}:${TAG}-${ARCH} is missing"
+              exit 1
+            fi
+            echo "${REPO}:${TAG}-${ARCH} does exist"
+          done
 
       - name: Hub manifest
         uses: actionhippie/manifest@6e645218a2939c5ec0f239ed80e5b7ff903b9cc2 # v1
