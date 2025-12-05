@@ -1,4 +1,4 @@
-FROM amd64/alpine:3.23 AS build
+FROM amd64/alpine:3.23@sha256:b47afff56f9040673f4878cb4215666e2317403525985f2cd95b51531d4846c8 AS build
 
 RUN apk add -U curl ca-certificates
 
