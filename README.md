@@ -25,6 +25,8 @@ For the available versions please look at [Docker Hub][dockerhub] or
 
 ```
 
+Extracted by the command: `grep -hE ': "\$\{(.*)\}"' latest/overlay/etc/entrypoint.d/*.sh | sed 's/: "\${//' | sed 's/:="/ = /' | sed 's/"}"$//' | sort | uniq`
+
 ## Contributing
 
 Fork -> Patch -> Push -> Pull Request
