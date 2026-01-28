@@ -1,4 +1,4 @@
-FROM amd64/alpine:3.20@sha256:dad1f1b85525e7cd73c4698b8a0900ec5dadc7b23fa546f402bec9ac4d63b85c AS build
+FROM amd64/alpine:3.20@sha256:c31a35d6c0586855438d970609f782a5db18676866c5fcf2b72ac039394010d8 AS build
 
 RUN apk add -U curl ca-certificates
 
@@ -16,7 +16,7 @@ RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases
   chmod +x /tmp/gomplate && \
   /tmp/gomplate --help >/dev/null
 
-FROM amd64/alpine:3.20@sha256:dad1f1b85525e7cd73c4698b8a0900ec5dadc7b23fa546f402bec9ac4d63b85c
+FROM amd64/alpine:3.20@sha256:c31a35d6c0586855438d970609f782a5db18676866c5fcf2b72ac039394010d8
 
 ENV CRON_ENABLED=false
 ENV TERM=xterm
