@@ -1,7 +1,7 @@
 ---
 repository:
   name: alpine
-  description: Docker images for alpine
+  description: Docker images for Alpine
   topics: docker, image
 
   private: false
