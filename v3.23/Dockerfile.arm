@@ -1,4 +1,4 @@
-FROM arm32v6/alpine:3.23@sha256:62295e2fd101901c8b56011c500d4cb01371edeb3a6a54228754698d0eabe14b AS build
+FROM arm32v6/alpine:3.23@sha256:46edcc9aa7b9ceb3d7f81318de8a1fe98c5246093e509ad2a167377b692a8f3e AS build
 
 RUN apk add -U curl ca-certificates
 
