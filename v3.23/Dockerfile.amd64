@@ -16,7 +16,7 @@ RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases
   chmod +x /tmp/gomplate && \
   /tmp/gomplate --help >/dev/null
 
-FROM amd64/alpine:3.22@sha256:a12e38665eb08a674e8f7a377ef5e1359e2ec2dc257fb2ad5249fab0d9e22d68
+FROM amd64/alpine:3.22@sha256:49e9370a0b8c081f75f408e069c417b0a3ec0b41e5878bed4b0a34bc52e7c5c9
 
 ENV CRON_ENABLED=false
 ENV TERM=xterm
