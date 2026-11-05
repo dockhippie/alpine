@@ -1,4 +1,4 @@
-FROM arm64v8/alpine:3.23@sha256:725da9ad71ccb18181e2fdfa2f5b67c5ca93c63b911bd78bc112706b56028638 AS build
+FROM arm64v8/alpine:3.23@sha256:2626c4e3300f2125710e487de6a562e7ea243e6f281e82aea1aa30caee6d2f46 AS build
 
 RUN apk add -U curl ca-certificates
 
@@ -16,7 +16,7 @@ RUN curl -sSLo /tmp/gomplate https://github.com/hairyhenderson/gomplate/releases
   chmod +x /tmp/gomplate && \
   /tmp/gomplate --help >/dev/null
 
-FROM arm64v8/alpine:3.23@sha256:725da9ad71ccb18181e2fdfa2f5b67c5ca93c63b911bd78bc112706b56028638
+FROM arm64v8/alpine:3.23@sha256:2626c4e3300f2125710e487de6a562e7ea243e6f281e82aea1aa30caee6d2f46
 
 ENV CRON_ENABLED=false
 ENV TERM=xterm
